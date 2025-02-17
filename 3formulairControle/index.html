@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <form action="./index.html">
+        <fieldset>
+            <legend>Formulaire</legend>
+            <div class="col col1">
+                <label for="mail">Email</label>
+                <input type="email" name="mail" id="mail" placeholder="Entrez votre nom" autocomplete="username">
+                <p id="errmail"></p>
+            </div>
+            <div class="col col2">
+                <label for="pass">Password</label>
+                <input type="password" name="pass" id="pass" placeholder="Entrez votre mot de passe" autocomplete="current-password">
+                <p id="errpass"></p>
+            </div>
+            <input type="submit" value="Envoyer">
+        </fieldset>
+    </form>
+
+    <script src="./script.js" defer></script>
+</body>
+</html>

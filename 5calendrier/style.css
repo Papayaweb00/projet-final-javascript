@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Playwrite+AU+SA:wght@100..400&family=Playwrite+IN:wght@100..400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Playwrite AU SA", serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 1em;
+}
+
+body {
+    background-color: black;
+}
+
+.months-container {
+    background-color: black;
+    color: aliceblue;
+    padding-top: 75px;
+}
+
+.calendar-header {
+    background-color: #6f2cf4;
+    position: fixed;
+    width: 100%;
+    font-weight: bold;
+    color: aliceblue;
+}
+
+.month-container {
+    position: sticky;
+    top: 0;
+}
+
+.calendar table.month td.day .day-content {
+    transition: background-color 200ms ease-in-out;
+}
+
+.calendar table.month td.day .day-content:hover {
+    background-color: #6f2cf4;
+}
+
+.year-title:hover {
+    color: black;
+}
+
+@media screen and (max-width: 568px) {
+    .months-container {
+        gap: 35px;
+    }
+}

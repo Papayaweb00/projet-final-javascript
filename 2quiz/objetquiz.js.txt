@@ -1,0 +1,191 @@
+let myquestion = [
+    {
+        question: "1)Que signifie HTML ?",
+        answers: {
+            a: 'HiperLinke text Metcn',
+            b: 'Hyper Text Markup Langage',
+            c: 'Home Tools Mark Lang'
+        },
+        correctAnswer: "b",
+    },
+    {
+        question: "2)Que signifie CSS ?",
+        answers: {
+            a: 'Cascade Sous Sol',
+            b: 'Cascading sheets Styles',
+            c: 'Cascading Style Sheets'
+        },
+        correctAnswer: "c",
+    },
+    {
+        question: "3)Quel est l'element qui permet de modifier la taille d'un texte en CSS ?",
+        answers: {
+            a: 'font-size',
+            b: 'text-size',
+            c: 'modif-size'
+        },
+        correctAnswer: "a",
+    },
+    {
+        question: "4)Quel est l'element qui permet de modifier la couleur d'un texte en CSS ?",
+        answers: {
+            a: 'Couleur',
+            b: 'colorier',
+            c: 'color'
+        },
+        correctAnswer: "c",
+    },
+]
+
+
+const quizzcontainer = document.querySelector('#quizz');
+const submit = document.querySelector('#submit');
+const result = document.querySelector('#result');
+
+
+export function genratequizz(question, quizzcontainer, quizzcontainer, submitbtn) {
+    function showquestion(question, quizzcontainer) {
+        let outpout = [];
+        for (let i = 0; i < question.length; i++) {
+            let question = question[i];
+            let answers = [];
+
+            for (letter in question.answers) {
+                answers.push(
+                    `
+                        <label>
+                            <input type="radio" name"question" value="${letter}${letter}:${question.answers[letter]}"
+                        </label>
+                    `
+                )
+            }
+            outpout.push(
+                `
+                    <h1 class="question">${myquestion.question}</h1>
+                    <div class="answers">${answers.join('')}</div>
+                `
+            );
+            quizzcontainer.innerHTML = outpout.join("");
+        }
+    }
+
+    function showresul(question, quizzcontainer, resultatContainer) {
+        let answersContainer = quizzcontainer.querySelectorAll(".answers");
+        let useranswers = "";
+        let numcorect = 0;
+
+        for (let i = 0; i < question.length; i++) {
+            let answerContainer = answersContainer[i];
+            let selected = answerContainer.querySelector(
+                `
+                    input[name="question${i}"].checked
+                `
+            )
+
+            if (selected) {
+                let selectedAnswers = selected.value;
+
+                if (selectedAnswers === question[i].correctAnswer) {
+                    numcorect++;
+                    selected.parentElement.classlist.add('correct');
+                } else {
+                    selected.parentElement.classlist.add('incorrect');
+                }
+            }
+        }
+
+        resultatContainer.innerHTML = `${numcorect}reponse(s) trouvee(s) sur ${question.length}`;
+    }
+
+    showquestion(myquestion, quizzcontainer);
+    submit.onclick = function(){
+        showresul(question, quizzcontainer, resultatContainer);
+    }
+}
+
+
+
+
+
+
+
+let myquestion = [
+    {
+        question: "1)Que signifie HTML ?",
+        answers: {
+            a: 'HiperLinke text Metcn',
+            b: 'Hyper Text Markup Langage',
+            c: 'Home Tools Mark Lang'
+        },
+        correctAnswer: "b",
+    },
+    {
+        question: "2)Que signifie CSS ?",
+        answers: {
+            a: 'Cascade Sous Sol',
+            b: 'Cascading sheets Styles',
+            c: 'Cascading Style Sheets'
+        },
+        correctAnswer: "c",
+    },
+    {
+        question: "3)Quel est l'element qui permet de modifier la taille d'un texte en CSS ?",
+        answers: {
+            a: 'font-size',
+            b: 'text-size',
+            c: 'modif-size'
+        },
+        correctAnswer: "a",
+    },
+    {
+        question: "4)Quel est l'element qui permet de modifier la couleur d'un texte en CSS ?",
+        answers: {
+            a: 'Couleur',
+            b: 'colorier',
+            c: 'color'
+        },
+        correctAnswer: "c",
+    },
+]
+
+// const complete_question = document.querySelector('#complete_question');
+const submit = document.querySelector('#submit');
+// const response_btn = document.querySelectorAll('#response_btn');
+const section = document.querySelector('section');
+
+export function generatequestion() {
+    let question = myquestion[i];
+    const element = document.createElement('div');
+    myquestion.forEach((question, index) => {
+        element.innerHTML = `
+        <div class="complete_question">
+            <h2>${question.question}</h2>
+            <div class="response_btn">
+                    <label for="question${index}"><input type="radio" value="a" name="question${index}">${question.answers.a}</label>
+                    <label for="question${index}"><input type="radio" value="b" name="question${index}">${question.answers.b}</label>
+                    <label for="question${index}"><input type="radio" value="c" name="question${index}">${question.answers.c}</label>
+            </div>
+        </div>
+        `;
+        section.appendChild(element);
+    })
+
+    submit.addEventListener('click', function () {
+        const response_btn = document.querySelector(".response_btn");
+
+        let response_cor = response_btn.querySelector(
+            `
+                <input [name="question${i}"]:checked>
+            `
+        );
+
+        if (response_cor) {
+            let selectrespon = response_cor.value;
+            if (selectrespon === question.correctAnswer) {
+                response_cor.style.color = 'green';
+            } else {
+                response_cor.style.color = 'red';
+            }
+        }
+    })
+}
