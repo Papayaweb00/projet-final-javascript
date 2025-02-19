@@ -1,25 +1,39 @@
 const section = document.querySelector("#section");
+const valeur = document.querySelector("#valeur");
+// const form = document.querySelector("#form");
 
 function createMult(num) {
     const div = document.createElement('div');
     section.appendChild(div);
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 11; i++) {
         const p = document.createElement('p');
         div.appendChild(p);
         p.innerHTML += `${num} * ${i} = ${num * i}`;
     }
 };
 
-createMult(0);
-createMult(1);
-createMult(2);
-createMult(3);
-createMult(4);
-createMult(5);
-createMult(6);
-createMult(7);
-createMult(8);
-createMult(9);
-createMult(10);
-createMult(11);
-// createMult(12);
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+
+            form.classList.add('was-validated');
+            localStorage.setItem('nombre', JSON.stringify(valeur.value));
+        }, false)
+    })
+
+    const inputValue = JSON.parse(localStorage.getItem('nombre'));
+    if(inputValue) {
+        createMult(inputValue);
+    }
+})();

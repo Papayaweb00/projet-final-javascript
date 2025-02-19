@@ -38,6 +38,7 @@ let myquestion = [
 ]
 
 const submit = document.querySelector('#submit');
+submit.style.display = 'none';
 const section = document.querySelector('section');
 
 export function generatequestion() {
@@ -54,7 +55,25 @@ export function generatequestion() {
                     </div>
                 </div>
                 `;
+
         section.appendChild(element);
+    });
+
+    // Vérifier si toutes les questions ont une réponse sélectionnée
+    function selectionTous() {
+        /* La méthode .every() nous permet de vérifier si 
+            -toutes les questions ont une réponse sélectionnée.*/
+        let allAnswered = myquestion.every((_, index) => {
+            return document.querySelector(`input[name="question${index}"]:checked`);
+        });
+
+        // Afficher le bouton uniquement si toutes les réponses sont sélectionnées
+        submit.style.display = allAnswered ? "block" : "none";
+    }
+
+    // Ajouter un écouteur d'événement sur chaque radio pour détecter les changements
+    document.querySelectorAll('input[type="radio"]').forEach(input => {
+        input.addEventListener('change', selectionTous);
     });
 
     myquestion.forEach((question, index) => {
@@ -62,19 +81,42 @@ export function generatequestion() {
             const response_btn = document.querySelector(".response_btn");
 
             let response_cor = document.querySelector(
-                `
-                    input[name="question${index}"]:checked
-                `
+                `input[name="question${index}"]:checked`
+            );
+
+            let non_selection = document.querySelectorAll(
+                `input[name="question${index}"]:not(:checked)`
             );
 
             if (response_cor) {
                 let selectrespon = response_cor.value;
                 let parentLabel = response_cor.parentElement;
+
                 if (selectrespon === question.correctAnswer) {
-                    parentLabel.style.color = 'green';
+                    parentLabel.style.color = "green";
                 } else {
-                    parentLabel.style.color = 'red';
+                    parentLabel.style.color = "red";
                 }
+
+                // Désactiver toutes les autres réponses non cochées
+                non_selection.forEach(input => input.disabled = true);
+
+                /* 
+                    La méthode find() renvoie la valeur du premier élément trouvé 
+                        dans le tableau qui respecte la condition donnée 
+                            par la fonction de test passée en argument.
+                */
+                let correctOption = [...non_selection].find(input => input.value === question.correctAnswer);
+                if (correctOption) {
+                    // Affichage de la bonne réponse
+                    correctOption.parentElement.style.color = "green";
+                }
+
+                submit.style.backgroundColor = 'red';
+                submit.innerHTML = 'Recommencer';
+                submit.addEventListener('click', () => {
+                    window.location.reload();
+                })
             }
         })
     })

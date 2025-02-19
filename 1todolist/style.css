@@ -8,8 +8,9 @@ button{
     cursor: pointer;
 }
 
-/* nav */
-nav {
+/* nav ET footer */
+nav,
+footer {
     background-color: #0d6efd;
     color: #dee2e6;
     padding: 15px;
@@ -28,6 +29,7 @@ nav {
     gap: 15px;
     padding: 15px;
     border: 1px solid black;
+    border-radius: 9px;
     margin: 5px;
 }
 
@@ -145,3 +147,7 @@ nav {
     text-align: center;
     padding: 9px 0;
 }
+
+/* .suppr {
+    color: #dee2e6;
+} */

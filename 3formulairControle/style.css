@@ -6,18 +6,27 @@
 
 }
 
+/* nav ET footer */
+nav,
+footer {
+    background-color: #0d6efd;
+    color: #dee2e6;
+    padding: 15px;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+
 /* ----formulaire---- */
 form {
     padding: 15px;
 }
 
 fieldset {
-    padding: 19px 25px 35px;
     display: flex;
     flex-direction: column;
     gap: 25px;
     border-radius: 9px;
-    /* background-color: #0d6efd; */
 }
 
 fieldset legend {

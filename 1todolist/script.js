@@ -11,15 +11,16 @@ divtache.appendChild(ul);
 function aff(a, id) {
     const h = new Date();
     const date = h.toLocaleDateString();
-
+    
     const li = document.createElement('li');
     li.innerText = a + '\n' + date;
     li.setAttribute('data-id', id);
-    // li.innerText = `${a} - ${date}`;
-    const btn =  document.createElement('button');
-    btn.innerText = 'Supprimer';
-    ul.appendChild(li);
+    
+    const btn = document.createElement('button');
+    btn.innerHTML = `fermer`;
     li.appendChild(btn);
+    
+    ul.appendChild(li);
 }
 
 const contentStorage = JSON.parse(localStorage.getItem('tache')) || [];
