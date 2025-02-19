@@ -1,9 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Play:wght@400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+.question {
+    font-family: "Play", serif;
+    /* font-weight: bold; */
+    font-style: normal;
+
+}
 /* nav ET footer */
 nav,
 footer {
@@ -14,15 +22,7 @@ footer {
     text-align: center;
 }
 
-/* body {
-    background-color: #47d4ff;
-} */
 
-.question {
-    text-align: center;
-    padding: 29px 0 11px;
-
-}
 
 section {
     padding: 0 35px;
