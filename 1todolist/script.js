@@ -19,6 +19,7 @@ function aff(a, id) {
     const btn = document.createElement('button');
     btn.innerHTML = `fermer`;
     li.appendChild(btn);
+    ul.classList = 'ps-0'
     
     ul.appendChild(li);
 }
