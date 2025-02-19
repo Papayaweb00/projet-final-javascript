@@ -1,6 +1,6 @@
 const section = document.querySelector("#section");
 const valeur = document.querySelector("#valeur");
-const arret = document.querySelector("#arret");
+// const arret = document.querySelector("#arret");
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     const forms = document.querySelectorAll('.needs-validation')
 
@@ -11,7 +11,7 @@ function createMult(num, arret) {
     ptext.classList = "btn btn-light shadow";
     section.appendChild(div);
 
-    for (let i = 0; i < arret; i++) {
+    for (let i = 1; i < 11; i++) {
         const p = document.createElement('p');
         div.appendChild(p);
         p.innerHTML += `${num} * ${i} = ${num * i}`;
@@ -21,7 +21,7 @@ function createMult(num, arret) {
     div.appendChild(ptext);
     ptext.addEventListener('click', ()=>{
         localStorage.removeItem('nombre');
-        localStorage.removeItem('nombreArret');
+        // localStorage.removeItem('nombreArret');
         window.location.reload();
     })
 };
@@ -40,13 +40,14 @@ function createMult(num, arret) {
 
             form.classList.add('was-validated');
             localStorage.setItem('nombre', JSON.stringify(valeur.value));
-            localStorage.setItem('nombreArret', JSON.stringify(arret.value));
+            // localStorage.setItem('nombreArret', JSON.stringify(arret.value));
         }, false)
     })
 
     const inputValue = JSON.parse(localStorage.getItem('nombre'));
-    const inputArret = JSON.parse(localStorage.getItem('nombreArret'));
+    // const inputArret = JSON.parse(localStorage.getItem('nombreArret'));
     if(inputValue) {
-        createMult(inputValue, inputArret);
+        createMult(inputValue);
+        // createMult(inputValue, inputArret);
     }
 })();
