@@ -38,8 +38,10 @@ let myquestion = [
 ]
 
 const submit = document.querySelector('#submit');
+const contentscore = document.querySelector('#score');
 submit.style.display = 'none';
 const section = document.querySelector('section');
+let score = 0;
 
 export function generatequestion() {
     myquestion.forEach((question, index) => {
@@ -75,6 +77,7 @@ export function generatequestion() {
     document.querySelectorAll('input[type="radio"]').forEach(input => {
         input.addEventListener('change', selectionTous);
     });
+    const p = document.createElement('h1');
 
     myquestion.forEach((question, index) => {
         submit.addEventListener('click', function () {
@@ -94,6 +97,19 @@ export function generatequestion() {
 
                 if (selectrespon === question.correctAnswer) {
                     parentLabel.style.color = "green";
+                        score++;
+                        console.log(score);
+
+                        // p.innerHTML = `Vous avez un score de ${score} sur ${myquestion.length}`;
+                        // p.style.textAlign = 'center';
+                        // section.appendChild(p);
+
+                        p.id = "scoreDisplay";
+                        p.style.textAlign = "center";
+                        contentscore.appendChild(p);
+    
+                        // p.innerHTML = `Vous avez un score de ${score} sur ${myquestion.length}`;
+                        p.innerHTML = `Vous avez un score de ${score} sur ${myquestion.length}.`;
                 } else {
                     parentLabel.style.color = "red";
                 }
