@@ -46,6 +46,8 @@ footer {
 @media screen and (max-width: 568px) {
     #affichageContainer {
         grid-template-columns: repeat(1, 1fr);
+        padding: 0 20px 0 7px;
+        margin: 35px 0;
     }
 
     nav h1 {
